@@ -29,8 +29,4 @@ public class UCenterController implements UCenterControllerApi {
         return userRepository.getByUsername("dlice");
     }
 
-//    public QueryResponseResult UserQuery(@RequestBody UserQueryRequest userRequest, Pageable pageable){
-//        return
-//    }
-
 }

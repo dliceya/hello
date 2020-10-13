@@ -27,6 +27,18 @@ public class BaseEntity {
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
+    /**
+     * Active mark.
+     */
+    @Column(name = "is_active", columnDefinition="varchar(1)")
+    private Boolean isActive;
+
+    /**
+     * Delete mark.
+     */
+    @Column(name = "is_delete", columnDefinition="varchar(1)")
+    private Boolean isDelete;
+
     @PrePersist
     protected void prePersist() {
         LocalDateTime now = LocalDateTime.now();
@@ -36,6 +48,14 @@ public class BaseEntity {
 
         if (updateTime == null) {
             updateTime = now;
+        }
+
+        if (isActive == null) {
+            isActive = true;
+        }
+
+        if(isDelete == null) {
+            isDelete = false;
         }
     }
 

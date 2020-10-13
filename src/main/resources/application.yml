@@ -50,6 +50,9 @@ spring:
       ddl-auto: update
     show-sql: true
     open-in-view: false
+    database: mysql
+    generate-ddl: true
+
 
 mybatis:
   mapper-locations: mappers/*.xml

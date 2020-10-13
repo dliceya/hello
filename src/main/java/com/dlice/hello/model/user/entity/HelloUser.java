@@ -1,11 +1,14 @@
 package com.dlice.hello.model.user.entity;
 
 import com.dlice.hello.common.model.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @ToString(callSuper = true)
@@ -18,13 +21,25 @@ public class HelloUser extends BaseEntity {
     private Integer id;
 
     /**
+     * User role id.
+     */
+    @Column(name = "rid")
+    private Integer rid;
+
+    /**
+     * User mobile phone.
+     */
+    @Column(name = "phone", length = 15, unique = true)
+    private String phone;
+
+    /**
      * User name.
      */
-    @Column(name = "username", length = 50, nullable = false)
+    @Column(name = "username", length = 50, nullable = false, unique = true)
     private String username;
 
     /**
-     * User nick name,used to display on page.
+     * User nick name, used to display on page.
      */
     @Column(name = "nickname", length = 50, nullable = false)
     private String nickname;
@@ -33,7 +48,15 @@ public class HelloUser extends BaseEntity {
      * Password.
      */
     @Column(name = "password", nullable = false)
+    @JsonIgnore
     private String password;
+
+    /**
+     * User birthday.
+     */
+    @Column(name = "birthday")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime birthday;
 
     /**
      * User email.
@@ -42,16 +65,16 @@ public class HelloUser extends BaseEntity {
     private String email;
 
     /**
-     * User phone number.
+     * User qq number, used to get default Head portrait.
      */
-    @Column(name = "phone", length = 15)
-    private String phone;
+    @Column(name = "qq", length = 15)
+    private String qq;
 
     /**
-     * User active mark.
+     * Head portrait url.
      */
-    @Column(name = "is_active")
-    private Boolean isActive;
+    @Column(name = "head_portrait", length = 100)
+    private String headPortrait;
 
     @Override
     public void prePersist() {
@@ -65,8 +88,12 @@ public class HelloUser extends BaseEntity {
             phone = "";
         }
 
-        if (isActive == null) {
-            isActive = true;
+        if (qq == null) {
+            qq = "1767953212";
+        }
+
+        if (headPortrait == null) {
+            headPortrait = "";
         }
     }
 }
