@@ -18,6 +18,7 @@ public class Swagger2Configuration {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .tags(new Tag("first", "first"), this.getTags())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.hello"))
                 .paths(PathSelectors.any())
@@ -25,10 +26,9 @@ public class Swagger2Configuration {
     }
 
     private Tag[] getTags() {
-        Tag[] tags = {
+        return new Tag[]{
                 new Tag("uCenter", "用户中心"),
         };
-        return tags;
     }
 
     private ApiInfo apiInfo() {

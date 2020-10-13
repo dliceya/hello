@@ -50,7 +50,7 @@ public class HelloUser extends BaseEntity {
     /**
      * User active mark.
      */
-    @Column(name = "isActive")
+    @Column(name = "is_active")
     private Boolean isActive;
 
     @Override
