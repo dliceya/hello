@@ -1,6 +1,7 @@
 package com.dlice.hello.repostitory;
 
-import com.dlice.hello.model.user.entity.HelloUser;
+import com.dlice.hello.model.role.entity.Role;
+import com.dlice.hello.repository.RoleRepository;
 import com.dlice.hello.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,15 +21,18 @@ public class TestUser {
     @Resource
     UserRepository userRepository;
 
+    @Resource
+    RoleRepository roleRepository;
+
     @Test
     public void testAddUser(){
-        HelloUser user = new HelloUser();
-        user.setUsername("dlice");
-        user.setEmail("158156325@qq.com");
-        user.setNickname("Lucas");
-        user.setPassword("158156");
-        user.setPhone("17795793350");
+    }
 
-        userRepository.save(user);
+    @Test
+    public void testGet(){
+
+        for (Role role : roleRepository.findAll()) {
+            System.out.println(role);
+        }
     }
 }

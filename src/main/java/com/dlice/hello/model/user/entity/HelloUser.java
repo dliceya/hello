@@ -5,26 +5,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
-@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity(name = "users")
 public class HelloUser extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
-    /**
-     * User role id.
-     */
-    @Column(name = "rid")
-    private Integer rid;
+    @Column(name = "user_id")
+    private Integer userId;
 
     /**
      * User mobile phone.
@@ -55,6 +47,7 @@ public class HelloUser extends BaseEntity {
      * User birthday.
      */
     @Column(name = "birthday")
+
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime birthday;
 

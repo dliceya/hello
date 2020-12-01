@@ -15,13 +15,13 @@ import javax.persistence.*;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@Entity(name = "group")
+@Entity(name = "hello_group")
 public class Group extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "group_id")
+    private Integer groupId;
 
     @Column(name = "group_name", length = 50, nullable = false)
     private String groupName;
@@ -29,5 +29,4 @@ public class Group extends BaseEntity {
     @Column(name = "group_number", length = 10)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer groupNumber;
-
 }
