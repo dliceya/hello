@@ -6,8 +6,6 @@ package com.dlice.hello.service;
  */
 public interface UserService {
 
-    String getStringTest(Integer param);
-
 //    public QueryResponseResult getUserList(UserQueryRequest userRequest, Pageable pageable){
 //
 //        QueryResult queryResult = new QueryResult();
