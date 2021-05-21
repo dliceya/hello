@@ -1,9 +1,9 @@
 package com.dlice.hello.cache;
 
 import lombok.*;
-import org.joda.time.LocalDateTime;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * Cache wrapper.

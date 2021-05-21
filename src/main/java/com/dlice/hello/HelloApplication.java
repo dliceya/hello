@@ -1,11 +1,13 @@
 package com.dlice.hello;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
+@MapperScan("com.dlice.hello.mapper")
 @SpringBootApplication
-@EnableJpaRepositories("com.dlice.hello.repository")
+@ConfigurationPropertiesScan
 public class HelloApplication {
 
     public static void main(String[] args) {

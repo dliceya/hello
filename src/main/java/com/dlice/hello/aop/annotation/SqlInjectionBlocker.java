@@ -1,0 +1,19 @@
+package com.dlice.hello.aop.annotation;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * @author mubai
+ **/
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.METHOD})
+public @interface SqlInjectionBlocker {
+
+    /**
+     * 需要校验的字段
+     */
+    String[] value() default  {"sortType","sortBy"};
+}

@@ -1,13 +1,15 @@
 package com.dlice.hello.controller;
 
-import com.dlice.hello.api.app.UCenterControllerApi;
-import com.dlice.hello.model.user.entity.HelloUser;
-import com.dlice.hello.repository.UserRepository;
+import com.dlice.hello.biz.member.HelloUserBiz;
+import com.dlice.hello.domain.member.HelloUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Date: 2020/9/3 21:45
@@ -15,22 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/ucenter")
-public class UCenterController implements UCenterControllerApi {
+public class UCenterController {
 
-    private final UserRepository userRepository;
-    public UCenterController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private HelloUserBiz helloUserBiz;
 
-
-    @Override
     @GetMapping("get")
     public HelloUser getUserInfoByName(@RequestParam @NonNull String username) {
-        return userRepository.getByUsername("dlice");
+        return helloUserBiz.getByUserName(username);
     }
 
-//    public QueryResponseResult UserQuery(@RequestBody UserQueryRequest userRequest, Pageable pageable){
-//        return
-//    }
+    @GetMapping("list")
+    public List<HelloUser> listAllUser() {
+
+        return helloUserBiz.listUser();
+    }
 
 }

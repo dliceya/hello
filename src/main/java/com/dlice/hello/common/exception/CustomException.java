@@ -6,7 +6,6 @@ import com.dlice.hello.common.model.response.ResultCode;
  * @Date: 2020/9/2 23:51
  * @Author: dlice
  */
-
 public class CustomException extends RuntimeException {
     private ResultCode resultCode;
 
